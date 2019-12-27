@@ -1,0 +1,64 @@
+<div class="body-pages">
+  <div class="header">
+    <h4 class="text-header">Contas a Pagar</h4>
+  </div>
+
+  <app-invoice-create></app-invoice-create>
+  <hr>
+  <div class="content">
+    <ng-container *ngIf="dataSource; else tableEmptyTemplate">
+      <div class="container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id</th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name</th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef> Valor</th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.value | currency: 'BRL'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="correctedValue">
+            <th mat-header-cell *matHeaderCellDef> Valor Corrigido</th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.correctedValue | currency: 'BRL'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dueDate">
+            <th mat-header-cell *matHeaderCellDef> Data de Vencimento</th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.dueDate | date: "dd/MM/yyyy"}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="paymentDate">
+            <th mat-header-cell *matHeaderCellDef> Data de Pagamento</th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.paymentDate | date: "dd/MM/yyyy"}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="penalty">
+            <th mat-header-cell *matHeaderCellDef> Multa</th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.penalty | currency: 'BRL'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="interest">
+            <th mat-header-cell *matHeaderCellDef> Juros</th>
+            <td mat-cell *matCellDef="let invoice"> {{invoice.interest | currency: 'BRL'}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </ng-container>
+
+    <ng-template #tableEmptyTemplate>
+      Não tem nenhum item cadastrado.
+    </ng-template>
+
+  </div>
+</div>

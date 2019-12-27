@@ -1,0 +1,50 @@
+<form [formGroup]="invoiceForm" novalidate>
+
+  <div class="row">
+    <mat-form-field class="form-group col-12">
+      <label>
+        <input matInput formControlName="name" placeholder="Nome">
+      </label>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="form-group col-6">
+      <input matInput [matDatepicker]="picker" placeholder="Data de Vencimento" formControlName="dueDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="form-group col-6">
+      <input matInput [matDatepicker]="picker2" placeholder="Data de Pagamento" formControlName="paymentDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="form-group col-6">
+      <span matPrefix>R$ &nbsp;</span>
+      <input matInput placeholder="Valor" formControlName="value" (blur)="correctValue()">
+    </mat-form-field>
+    <mat-form-field class="form-group col-6">
+      <span matPrefix>R$ &nbsp;</span>
+      <input matInput placeholder="Valor Corrigido" formControlName="correctedValue" readonly >
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="form-group col-4">
+      <input matInput placeholder="Dias de atraso" formControlName="daysLate" readonly>
+    </mat-form-field>
+    <mat-form-field class="form-group col-4">
+      <span matPrefix>R$ &nbsp;</span>
+      <input matInput placeholder="Valor Multa" formControlName="penalty" readonly>
+    </mat-form-field>
+    <mat-form-field class="form-group col-4">
+      <span matPrefix>R$ &nbsp;</span>
+      <input matInput placeholder="Valor Juros" formControlName="interest" readonly>
+    </mat-form-field>
+  </div>
+
+  <button mat-button (click)="save()">Incluir</button>
+</form>

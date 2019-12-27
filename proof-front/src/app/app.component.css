@@ -1,0 +1,24 @@
+
+.container-fluid-component {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container-fluid-component .tam-8{
+  margin-left: 140px!important;
+  position: absolute;
+  top: 0;
+  width: 89.7%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 0;
+}
+
+.body-home {
+  width: 100%;
+  height: 100%;
+}
